@@ -12,7 +12,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
 	public List<Student> findAllStudentsByFirstName(String firstName);
 	
-	public List<Student> findAllFemaleStudents();
-	
-	public List<Student> findAllMaleStudents();
+//	public List<Student> findAllFemaleStudents();
+//	
+//	public List<Student> findAllMaleStudents();
 }

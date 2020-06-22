@@ -16,7 +16,7 @@ import com.optimal.web.api.model.Student;
 import com.optimal.web.api.service.StudentService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/student-api/v1")
 public class StudentController {
 
 	@Autowired
@@ -24,7 +24,8 @@ public class StudentController {
 	
 	@GetMapping("/")
 	public String isUp() {
-		return "System is running";
+		System.out.println("Hello");
+		return "isOk";
 	}
 	
 	@GetMapping("/students")
@@ -39,8 +40,6 @@ public class StudentController {
 	
 	@PostMapping("/save")
 	public Student saveStudent(@RequestBody Student student) {
-		//System.out.println(studentService.saveStudent(student));
-		System.out.println(student);
 		return studentService.saveStudent(student);
 	}
 	
@@ -48,8 +47,6 @@ public class StudentController {
 	public Student updateStudent(@RequestBody Student student) {
 		return studentService.updateStudent(student);
 	}
-	
-	
 	@DeleteMapping("/delete/{id}")
 	public void deleteStudent(@PathVariable long id) {
 		studentService.deleteStudent(id);

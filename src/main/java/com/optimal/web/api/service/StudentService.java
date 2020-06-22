@@ -39,11 +39,11 @@ public class StudentService {
 		return studentRepository.save(student);
 	}
 
-	public List<Student> getAllFemaleStudents() {
-		return studentRepository.findAllFemaleStudents();
-	}
-	
-	public List<Student> getAllMaleStudents(){
-		return studentRepository.findAllMaleStudents();
-	}
+//	public List<Student> getAllFemaleStudents() {
+//		return studentRepository.findAllFemaleStudents();
+//	}
+//	
+//	public List<Student> getAllMaleStudents(){
+//		return studentRepository.findAllMaleStudents();
+//	}
 }
