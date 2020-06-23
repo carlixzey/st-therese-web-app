@@ -42,13 +42,13 @@ public class Student  implements Serializable{
 	@Column(name="middle_name")
 	private String middleName;
 	
-//	@ManyToOne
-//	@JoinColumn(name="department_id_fk")
-//	private Department department;
-	
 	@Enumerated(EnumType.ORDINAL)
 	@Column(nullable=false)
 	private Gender gender;
+	
+	@ManyToOne
+	@JoinColumn(name="department_id_fk")
+	private Department department;
 	
 	@ManyToOne
 	@JoinColumn(name="course_id_fk")

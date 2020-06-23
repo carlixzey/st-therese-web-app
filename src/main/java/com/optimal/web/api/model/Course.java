@@ -37,6 +37,7 @@ public class Course implements Serializable {
 	@Column(name="course_name", nullable = false)
 	private String name;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="department_id_fk")
 	private Department department;

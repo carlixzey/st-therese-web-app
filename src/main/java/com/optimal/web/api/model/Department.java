@@ -1,6 +1,7 @@
 package com.optimal.web.api.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -36,11 +37,10 @@ public class Department implements Serializable{
 
 	@JsonIgnore
 	@OneToMany(mappedBy="department")
-	private Set<Course> courses;
+	private Set<Course> courses;	
 	
-	
-//	@JsonIgnore
-//	@OneToMany(mappedBy="department")
-//	private List<Student> students;
+	@JsonIgnore
+	@OneToMany(mappedBy="department")
+	private List<Student> students;
 
 }
