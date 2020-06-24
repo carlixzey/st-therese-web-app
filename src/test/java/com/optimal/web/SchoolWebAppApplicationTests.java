@@ -1,18 +1,10 @@
 package com.optimal.web;
 
-import static org.mockito.Mockito.when;
-
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.optimal.web.api.enums.Gender;
-import com.optimal.web.api.model.Department;
-import com.optimal.web.api.model.Student;
 import com.optimal.web.api.repository.DepartmentRepository;
 import com.optimal.web.api.repository.StudentRepository;
 import com.optimal.web.api.service.DepartmentService;
@@ -35,9 +27,30 @@ class SchoolWebAppApplicationTests {
 	void contextLoads() {
 	}
 
-	@Test
-	public void savingDepartment() {
-	}
+//	@Test
+//	public void savingDepartmentTest() {
+//		Department dept = new Department(4,"ICS",null,null);
+//		when(departmentRepository.save(dept)).thenReturn(dept);
+//		
+//		assertSame(dept, departmentService.saveDepartment(dept));
+//	}
+	
+//	@Test
+//	public void getAllDepartmentTest() {
+//		when(departmentRepository.findAll()).thenReturn(Stream.of(new Department(2,"ICS",null,null),new Department(2,"ILAS",null,null)).collect(Collectors.toList()));
+//		
+//		assertEquals(2, departmentService.getAllDepartments().size());
+//	}
+	
+//	@Test
+//	public void getDepartmentById() {
+//		Department dept = new Department(3, "ICS",null,null);
+//		when(departmentRepository.getOne((long) 3)).thenReturn(new Department(3, "ICS",null,null));
+//		
+//		assertEquals(departmentRepository.getOne((long)3), dept);
+//	}
+	
+	
 
 //	@Test
 //	public void getAllStudentsTest() {

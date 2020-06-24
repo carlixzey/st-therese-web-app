@@ -44,10 +44,10 @@ public class DepartmentController {
 		return departmentService.getDepartmentById(id);
 	}
 	
-	@GetMapping("/department/{id}/courses")
-	public List<Course> getAllCourseByDepartmentId(@PathVariable long id){
-		return departmentService.getAllCourseByDepartmentId(id);
-	}
+//	@GetMapping("/department/{id}/courses")
+//	public List<Course> getAllCourseByDepartmentId(@PathVariable long id){
+//		return departmentService.getAllCourseByDepartmentId(id);
+//	}
 	
 	
 	

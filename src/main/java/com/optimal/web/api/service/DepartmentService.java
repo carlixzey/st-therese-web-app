@@ -28,8 +28,8 @@ public class DepartmentService{
 		return departmentRepository.findById(id);
 	}
 	
-	public List<Course> getAllCourseByDepartmentId(long id){
-		return departmentRepository.getAllCourseByDepartmentId(id);
-	}
+//	public List<Course> getAllCourseByDepartmentId(long id){
+//		return departmentRepository.getAllCourseByDepartmentId(id);
+//	}
 	
 }

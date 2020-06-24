@@ -12,6 +12,6 @@ import com.optimal.web.api.model.Department;
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Long> {
 
-	@Query("FROM Course WHERE department.id = ?1 ORDER BY name ASC")
-	public List<Course> getAllCourseByDepartmentId(long id);
+//	@Query("FROM Course WHERE department.id = ?1 ORDER BY name ASC")
+//	public List<Course> getAllCourseByDepartmentId(long id);
 }
