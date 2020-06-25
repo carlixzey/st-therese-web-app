@@ -2,14 +2,12 @@ package com.optimal.web.api.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,7 +15,6 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -54,13 +51,7 @@ public class Course implements Serializable {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Manila")
 	private Date updatedAt;
 	
-	
-	//@JsonManagedReference
-//	@ManyToOne
-//	@JoinColumn(name="department_id_fk")
-//	private Department department;
-//	
-	@JsonBackReference
-	@OneToMany(mappedBy="course")
-	private List<Student> students;
+//	@JsonBackReference
+//	@OneToMany(mappedBy="course")
+//	private List<Student> students;
 }

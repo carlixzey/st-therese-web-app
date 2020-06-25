@@ -20,7 +20,7 @@ public class StudentService {
 	}
 
 	public List<Student> getAllStudents() {
-		return studentRepository.findAll();
+		return studentRepository.getALlStudents();
 	}
 
 	public List<Student> getAllStudentsByFirstName(String firstName) {
@@ -38,6 +38,8 @@ public class StudentService {
 	public Student updateStudent(Student student) {
 		return studentRepository.save(student);
 	}
+	
+	//public List<Student> getAllStudent
 
 //	public List<Student> getAllFemaleStudents() {
 //		return studentRepository.findAllFemaleStudents();

@@ -15,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,7 +23,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.optimal.web.api.enums.Gender;
 import com.sun.istack.NotNull;
 
@@ -80,13 +78,24 @@ public class Student implements Serializable {
 	inverseJoinColumns = {@JoinColumn(name = "subject_id") })
 	private Set<Subject> subjects = new HashSet<>();
 
-	@JsonManagedReference
-	@ManyToOne
-	@JoinColumn(name="course_id_fk")
-	private Course course;
 	
-//	@JsonBackReference
+//	@OneToMany(mappedBy = "student")
+//	private Set<StudentSubject> studentSubject = new HashSet<>();
+	
+	
+//	@JsonManagedReference
 //	@ManyToOne
-//	@JoinColumn(name="department_id_fk")
-//	private Department department;
+//	@JoinColumn(name="course_id_fk")
+//	private Course course;
+	
+	public void addSubject(Subject subject) {
+		this.subjects.add(subject);
+		subject.getStudents().add(this);
+	}
+	
+	public void removeSubject(Subject subject) {
+		this.subjects.remove(subject);
+		subject.getStudents().remove(this);
+	}
+
 }

@@ -20,7 +20,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -59,7 +58,17 @@ public class Subject implements Serializable {
 	@UpdateTimestamp
 	private Date updatedAt;
 	
-	@JsonIgnore
 	@ManyToMany(mappedBy="subjects", fetch = FetchType.LAZY)
 	private Set<Student> students = new HashSet<>();
+
+//	@OneToMany(mappedBy = "subject")
+//	private Set<StudentSubject> studentSubject = new HashSet<>();
+
+	public void addStudent(Student student) {
+		this.students.add(student);
+		student.getSubjects().add(this);
+	}
+
+
+
 }
