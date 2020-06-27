@@ -3,15 +3,11 @@ package com.optimal.web;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.when;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.optimal.web.api.enums.Gender;
-import com.optimal.web.api.model.Student;
 import com.optimal.web.api.model.Subject;
 import com.optimal.web.api.repository.StudentRepository;
 import com.optimal.web.api.repository.SubjectRepository;
@@ -41,8 +37,8 @@ class SchoolWebAppApplicationTests {
 		subject.setId(1);
 		subject.setName("Web Development");
 		subject.setCode("IT 412");
-		subject.setCreatedDate(new Date(2020 - 06 - 25));
-		subject.setUpdatedAt(new Date());
+//		subject.setCreatedDate(new Date(2020 - 06 - 25));
+//		subject.setUpdatedAt(new Date());
 
 		when(subjectRepository.save(subject)).thenReturn(subject);
 
@@ -50,7 +46,7 @@ class SchoolWebAppApplicationTests {
 	}
 
 	@Test
-	public void savingStudentTest() {
+	public void getStudentTest() {
 //		List<Subject> subjects = Stream
 //				.of(new Subject(1, "Web Development", "IT 412", new Date(2020 - 06 - 25), new Date(), null),
 //						new Subject(2, "Database Management", "IT 321", new Date(2020 - 06 - 25), new Date(), null))
@@ -58,26 +54,6 @@ class SchoolWebAppApplicationTests {
 		
 		
 		Subject subject = new Subject();
-		subject.setId(1);
-		subject.setName("Web Development");
-		subject.setCode("IT 412");
-		subject.setCreatedDate(new Date(2020 - 06 - 25));
-		subject.setUpdatedAt(new Date());
-		//subject.setStudents();
-		
-		Student student = new Student();
-		
-		
-		student.setId(1);
-		student.setFirstName("Carlix");
-		student.setLastName("Principe");
-		student.setGender(Gender.MALE);
-		student.setCreatedDate(new Date(2020-06-25));
-		student.addSubject(subject);
-		student.setUpdatedAt(new Date());
-
-		when(studentRepository.save(student)).thenReturn(student);
-		assertSame(student, studentService.saveStudent(student));
 		
 	}
 	
@@ -87,8 +63,8 @@ class SchoolWebAppApplicationTests {
 		subject.setId(1);
 		subject.setName("Web Development");
 		subject.setCode("IT 412");
-		subject.setCreatedDate(new Date(2020 - 06 - 25));
-		subject.setUpdatedAt(new Date());
+//		subject.setCreatedDate(new Date(2020 - 06 - 25));
+//		subject.setUpdatedAt(new Date());
 		
 		subjectRepository.save(subject);
 		assertSame(subjectRepository.getOne((long)1), subjectService.getSubjectById(1));	

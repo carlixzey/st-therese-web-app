@@ -1,7 +1,8 @@
 package com.optimal.web.api.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,11 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.optimal.web.api.enums.Gender;
@@ -35,6 +31,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "student")
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","subjects"})
 public class Student implements Serializable {
 
 	private static final long serialVersionUID = -1838858651249224771L;
@@ -59,18 +56,25 @@ public class Student implements Serializable {
 	@NotNull
 	private Gender gender;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(pattern="yyyy-MM-dd", timezone="Asia/Manila")
-	@Column(name="created_date", updatable=false)
-	@CreationTimestamp
-	private Date createdDate;
+//	@Temporal(TemporalType.TIMESTAMP)
+//	@JsonFormat(pattern="yyyy-MM-dd", timezone="Asia/Manila")
+//	@Column(name="created_date", updatable=false)
+//	@CreationTimestamp
+//	private Date createdDate;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="updated_at", updatable = true)
+//	@Temporal(TemporalType.TIMESTAMP)
+//	@Column(name="updated_at", updatable = true)
+//	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Manila")
+//	@UpdateTimestamp
+//	private Date updatedAt;
+
+	@Column(name="updated_at", updatable=false)
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Manila")
-	@UpdateTimestamp
-	private Date updatedAt;
-	
+	private LocalDateTime createdDate;
+
+	@Column(name="updated_at", updatable=true)
+	@JsonFormat(pattern="yyyy-MM-dd", timezone="Asia/Manila")
+	private LocalDate updatedAt;	
 	
 	@ManyToMany
 	@JoinTable(name = "student_subject", 
@@ -97,5 +101,9 @@ public class Student implements Serializable {
 		this.subjects.remove(subject);
 		subject.getStudents().remove(this);
 	}
+
+	//@PrePersist
+
+	//@PreUpdate
 
 }
