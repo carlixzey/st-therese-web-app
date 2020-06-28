@@ -56,24 +56,12 @@ public class Student implements Serializable {
 	@NotNull
 	private Gender gender;
 
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@JsonFormat(pattern="yyyy-MM-dd", timezone="Asia/Manila")
-//	@Column(name="created_date", updatable=false)
-//	@CreationTimestamp
-//	private Date createdDate;
-	
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@Column(name="updated_at", updatable = true)
-//	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Manila")
-//	@UpdateTimestamp
-//	private Date updatedAt;
-
-	@Column(name="updated_at", updatable=false)
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Manila")
+	@Column(name="created_at", updatable= false)
+	@JsonFormat(pattern="MM/dd/yyyy HH:mm:ss", timezone="Asia/Manila")
 	private LocalDateTime createdDate;
 
 	@Column(name="updated_at", updatable=true)
-	@JsonFormat(pattern="yyyy-MM-dd", timezone="Asia/Manila")
+	@JsonFormat(pattern="MM/dd/yyyy", timezone="Asia/Manila")
 	private LocalDate updatedAt;	
 	
 	@ManyToMany

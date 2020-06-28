@@ -6,12 +6,10 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.optimal.web.api.enums.Gender;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
-public class StudentResponseDTO {
+@Data
+public class StudentResponseDTO{
 
 	@JsonProperty(value="id")
 	private  long id;
@@ -33,19 +31,4 @@ public class StudentResponseDTO {
 
 	@JsonProperty(value="updatedAt")
 	private LocalDate updatedAt;
-
-	public StudentResponseDTO() {
-		
-	}
-
-	public StudentResponseDTO(long id, String firstName, String lastName, String middleName, Gender gender, LocalDateTime createdDate, LocalDate updatedAt) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.middleName = middleName;
-		this.gender = gender;
-		this.createdDate = createdDate;
-		this.updatedAt = updatedAt;
-	}
-
 }

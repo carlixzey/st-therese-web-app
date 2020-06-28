@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.optimal.web.api.dtos.responses.StudentResponseDTO;
@@ -24,9 +29,12 @@ public class StudentService {
 		return studentRepository.save(student);
 	}
 
-	public List<StudentResponseDTO> getAllStudents() {
-		List<Student> students = studentRepository.findAll();
-		return students.stream().map(converterService::convertToDTO).collect(Collectors.toList());
+	public Page<StudentResponseDTO> getAllStudents(int page, int pageSize) {
+		Pageable pageable = PageRequest.of(page-1, pageSize);
+		Page<Student> students = studentRepository.findAll(pageable);
+		List<StudentResponseDTO> studentResponseDTO = students.getContent().stream().map(converterService::convertToDTO)
+				.collect(Collectors.toList());
+		return new PageImpl<StudentResponseDTO>(studentResponseDTO, pageable, students.getTotalPages());
 	}
 
 	public StudentResponseDTO getStudentById(long id) {
@@ -34,8 +42,8 @@ public class StudentService {
 		return this.converterService.convertToDTO(student);
 	}
 
-	public List<Student> getAllStudentsByFirstName(String firstName) {
-		return studentRepository.findAllStudentsByFirstName(firstName);
+	public List<Student> getAllStudentsByFirstName(String firstName, Pageable pageable) {
+		return studentRepository.findAllStudentsByFirstName(firstName, pageable);
 	}
 
 	public void deleteStudent(long id) {
@@ -43,7 +51,7 @@ public class StudentService {
 	}
 
 	public Student updateStudent(Student student) {
-		return studentRepository.save(student);	
+		return studentRepository.save(student);
 	}
 
 //	public Optional<StudentResponseDTO> getStudentDTOById(long id){
