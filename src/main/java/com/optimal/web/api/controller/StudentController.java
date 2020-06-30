@@ -45,11 +45,12 @@ public class StudentController {
 		return studentService.getStudentById(id);
 	}
 
-//	@GetMapping("/student/{firstName}")
-//	public StudentResponseDTO getStudentByFirstName(@PathVariable String firstName, Pageable pageable) {
-//		//return studentService.getAllStudentsByFirstName();
-//		return null;
-//	}
+	@GetMapping("/student?firstName")
+	public Page<StudentResponseDTO> getStudentByFirstName(@RequestParam(value="firstName") String firstName,
+			@RequestParam(value = "page", defaultValue = "1") int page,
+			@RequestParam(value = "page_size", defaultValue = "8") int pageSize) {
+		return studentService.getAllStudentsByFirstName(firstName,page,pageSize);
+	}
 
 	@PostMapping("/save")
 	public Student saveStudent(@RequestBody Student student) {
